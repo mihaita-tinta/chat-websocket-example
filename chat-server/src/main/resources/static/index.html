@@ -1,0 +1,93 @@
+<html>
+	<head>
+	    <meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Chat</title>
+		
+   		<link href="assets/css/bootstrap.css" rel="stylesheet" />
+    	<style type="text/css">
+    		.media-list {
+    			max-height: 400px;
+    			overflow-y:auto;
+    		}
+    	</style>
+		<script type="text/javascript" src="libs/angular.js"></script>
+		<!-- Websocket -->
+		<script type="text/javascript" src="libs/sockjs-0.3.4.js"></script>
+		<script type="text/javascript" src="libs/stomp.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/websocket.service.js"></script>
+	</head>
+	<body>	
+		<div ng-app="myApp" ng-controller="myCtrl" class="container">
+				<div class="row " style="padding-top:40px;">
+			   		<div class="col-md-8">
+			        	<div class="panel panel-info">
+				            <div class="panel-heading">
+				                Conversation
+				            </div>
+			            <div class="panel-body">
+							<ul id="chat-ul" class="media-list" data-ng-show="messages.length>0">
+	     						<li class="media"  data-ng-repeat="item in messages" id="message-{{item.id}}">
+									<div class="media-body">
+                                           <div class="media">
+                                               <a class="pull-left" href="#">
+                                                   <img class="media-object img-circle " src="assets/img/user.gif" />
+                                               </a>
+                                               <div class="media-body" >
+                                                  {{ item.message}}
+                                                   <br />
+                                                  <small class="text-muted">{{ item.sender.username}} | {{ item.when}}</small>
+                                                   <hr />
+                                               </div>
+                                           </div>
+	                                </div>
+	                           	</li>
+			                </ul>
+			            </div>
+			            <div class="panel-footer">
+			                <div class="input-group">
+			                                    <input type="text" class="form-control" placeholder="Enter Message" data-ng-model="message"  />
+			                                    <span class="input-group-btn">
+			                                        <button class="btn btn-info" type="button" data-ng-click='sendMessage();'>SEND</button>
+			                                    </span>
+			                                </div>
+			            </div>
+			        </div>
+			    </div>
+			    <div class="col-md-4">
+			          <div class="panel panel-primary">
+			            <div class="panel-heading">
+			               ONLINE USERS
+			            </div>
+			            <div class="panel-body">
+			                <ul class="media-list">
+			                					<li>
+													<input type="text" class="form-control" placeholder="Username" data-ng-model="username"  />
+			                					</li>
+			                    				<li class="media"  data-ng-repeat="item in users" >
+			
+			                                        <div class="media-body">
+			
+			                                            <div class="media">
+			                                                <a class="pull-left" href="#">
+			                                                    <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.gif" />
+			                                                </a>
+			                                                <div class="media-body" >
+			                                                    <h5>{{ item.username}} | User </h5>
+			                                                    
+			                                                   <small class="text-muted">Last login: {{item.lastLogin}}</small>
+			                                                </div>
+			                                            </div>
+			
+			                                        </div>
+			                                    </li>
+			                                </ul>
+			                </div>
+			            </div>
+			        
+			    </div>
+			</div>
+		</div>
+	</body>
+</html>
