@@ -50,6 +50,7 @@
 	        <artifactId>heroku-maven-plugin</artifactId>
 	        <version>0.5.7</version>
 	        <configuration>
+  			  <appName>lmf-chat</appName>
 	          <processTypes>
 		          <web>java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar</web>
 		        </processTypes>
