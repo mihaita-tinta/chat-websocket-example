@@ -3,6 +3,7 @@
 
     angular.module('myApp').factory('WebSocketService', function($q) { 
     	var URL = 'https://lmf-chat.herokuapp.com/websocket';
+//    	var URL = 'http://localhost:8088/websocket';
     	var counter = 0;
         var self = this;
         var subscribers = {};
