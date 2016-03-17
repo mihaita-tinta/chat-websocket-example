@@ -1,0 +1,3 @@
+C:\workspaces\phonegap-workspace\chat-test\chat-client
+phonegap platform add android
+phonegap build android
